@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useAppDispatch, useTypedSelector } from "./store";
+import { useTypedSelector } from "./store";
 
 function ServiceWorkerInstalledMessage() {
   const { serviceWorkerRegistered } = useTypedSelector(
@@ -28,7 +28,6 @@ function ServiceWorkerInstalledMessage() {
 }
 
 function ServiceWorkerUpdatedMessage() {
-  const dispatch = useAppDispatch();
   const { serviceWorkerUpdated, serviceWorkerRegistration } = useTypedSelector(
     (state) => state.serviceWorkerRegistration
   );
