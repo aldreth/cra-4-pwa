@@ -7,10 +7,12 @@ import "./index.css";
 import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
+import ServiceWorkerMessages from "./ServiceWorkerMessages";
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
+      <ServiceWorkerMessages />
       <App />
     </Provider>
   </React.StrictMode>,
