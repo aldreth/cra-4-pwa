@@ -8,6 +8,7 @@ import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 import ServiceWorkerMessages from "./ServiceWorkerMessages";
+import { successfulRegistration, updateAvailable } from './slices/serviceWorkerRegistrationSlice'
 
 ReactDOM.render(
   <React.StrictMode>
@@ -23,10 +24,10 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://cra.link/PWA
 serviceWorkerRegistration.register({
-  onSuccess: (registration: ServiceWorkerRegistration) =>
-    console.log("successful registartion", registration),
-  onUpdate: (registration: ServiceWorkerRegistration) =>
-    console.log("successful update", registration),
+  onSuccess: (registration) =>
+    store.dispatch(successfulRegistration(registration)),
+  onUpdate: (registration) =>
+    store.dispatch(updateAvailable(registration)),
 });
 
 // If you want to start measuring performance in your app, pass a function
