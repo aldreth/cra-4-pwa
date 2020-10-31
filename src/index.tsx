@@ -1,14 +1,17 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Provider } from 'react-redux'
+import { Provider } from "react-redux";
 
-import store from './store'
+import store from "./store";
 import "./index.css";
 import App from "./App";
 import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 import reportWebVitals from "./reportWebVitals";
 import ServiceWorkerMessages from "./ServiceWorkerMessages";
-import { successfulRegistration, updateAvailable } from './slices/serviceWorkerRegistrationSlice'
+import {
+  successfulRegistration,
+  updateAvailable,
+} from "./slices/serviceWorkerRegistrationSlice";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -24,10 +27,14 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://cra.link/PWA
 serviceWorkerRegistration.register({
-  onSuccess: (registration) =>
-    store.dispatch(successfulRegistration(registration)),
-  onUpdate: (registration) =>
-    store.dispatch(updateAvailable(registration)),
+  onSuccess: (registration) => {
+    console.log("service worker registered");
+    store.dispatch(successfulRegistration(registration));
+  },
+  onUpdate: (registration) => {
+    console.log("service worker update");
+    return store.dispatch(updateAvailable(registration));
+  },
 });
 
 // If you want to start measuring performance in your app, pass a function

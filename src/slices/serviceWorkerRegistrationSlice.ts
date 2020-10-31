@@ -19,11 +19,13 @@ const slice = createSlice({
       state,
       action: PayloadAction<ServiceWorkerRegistration>
     ) {
+      console.log('in success reducer', action)
       const serviceWorkerRegistration = action.payload;
       state.serviceWorkerRegistered = true;
       state.serviceWorkerRegistration = serviceWorkerRegistration;
     },
     update(state, action: PayloadAction<ServiceWorkerRegistration>) {
+      console.log('in update reducer', action)
       state.serviceWorkerUpdated = !state.serviceWorkerUpdated;
       state.serviceWorkerRegistration = action.payload;
     },
