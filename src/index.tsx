@@ -29,10 +29,12 @@ ReactDOM.render(
 serviceWorkerRegistration.register({
   onSuccess: (registration) => {
     console.log("service worker registered");
+    console.log("more logging");
     store.dispatch(successfulRegistration(registration));
   },
   onUpdate: (registration) => {
     console.log("service worker update");
+    console.log("more logging update");
     return store.dispatch(updateAvailable(registration));
   },
 });
