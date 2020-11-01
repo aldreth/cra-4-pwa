@@ -34,7 +34,6 @@ serviceWorkerRegistration.register({
   },
   onUpdate: (registration) => {
     console.log("service worker update");
-    console.log("more logging update");
     return store.dispatch(updateAvailable(registration));
   },
 });
